@@ -10,6 +10,7 @@ import thrift.BookshoutAccountsService;
 import thrift.User;
 
 public class AccountsRPCClient implements BookshoutAccountsService.Iface{
+	
 	private BookshoutAccountsService.Client clnt;
 	private TTransport transport;
 	public AccountsRPCClient(String host, int port) throws TTransportException{

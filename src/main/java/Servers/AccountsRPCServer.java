@@ -5,17 +5,17 @@ import org.apache.thrift.transport.TServerSocket;
 import org.apache.thrift.transport.TServerTransport;
 import org.apache.thrift.transport.TTransportException;
 
-import ServiceHandlers.AccountsSerivceHandler;
+import ServiceHandlers.AccountsServiceHandler;
 import thrift.BookshoutAccountsService;
 
 import org.apache.thrift.server.TServer.Args;
 
 public class AccountsRPCServer {
-	public static AccountsSerivceHandler handler;
+	public static AccountsServiceHandler handler;
 	public static BookshoutAccountsService.Processor<BookshoutAccountsService.Iface> processor;
 	
 	public static void main(String[] args){
-		handler = new AccountsSerivceHandler();
+		handler = new AccountsServiceHandler();
 		processor = new BookshoutAccountsService.Processor<BookshoutAccountsService.Iface>(handler);
 		Runnable simple = new Runnable(){
 			public void run() {

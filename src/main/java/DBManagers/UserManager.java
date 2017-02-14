@@ -9,13 +9,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-import Domain.User;
+import Domain.Accounts.User;
 
 public class UserManager {
 	private Session session;
 	SessionFactory factory;
 	public UserManager(){
-		factory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+		factory = new Configuration().configure("accounts_hibernate.cfg.xml").buildSessionFactory();
 		session = factory.openSession();
 	}
 	

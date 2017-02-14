@@ -3,7 +3,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import DBManagers.UserManager;
-import Domain.User;
+import Domain.Accounts.User;
 
 public class Driver {
 	public static void main(String[] args){
