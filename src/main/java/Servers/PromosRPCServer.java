@@ -5,6 +5,7 @@ import org.apache.thrift.transport.TServerSocket;
 import org.apache.thrift.transport.TServerTransport;
 import org.apache.thrift.transport.TTransportException;
 
+import DBManagers.PromoManager;
 import ServiceHandlers.PromosServiceHandler;
 import thrift.BookshoutPromosService;
 
@@ -33,6 +34,8 @@ public class PromosRPCServer {
 		      // Use this for a multithreaded server
 		      // TServer server = new TThreadPoolServer(new TThreadPoolServer.Args(serverTransport).processor(processor));
 
+		      //warm DBS
+		      PromoManager.warm();
 		      System.out.println("Starting the simple server...");
 		      server.serve();
 		} catch (TTransportException e) {

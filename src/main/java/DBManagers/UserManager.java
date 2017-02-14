@@ -15,6 +15,10 @@ public class UserManager {
 
 	private static Session sessionInstance;
 	private Session session;
+	
+	public static void warm() {
+		getSession();
+	}
 	private static Session getSession() {
 		if(sessionInstance == null) {
 			SessionFactory factory = new Configuration().configure("accounts_hibernate.cfg.xml").buildSessionFactory();
