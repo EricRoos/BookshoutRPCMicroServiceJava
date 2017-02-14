@@ -1,6 +1,9 @@
 package Servers;
 import static spark.Spark.*;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import com.google.gson.Gson;
 
 import Clients.GatewayServiceClient;
@@ -9,6 +12,7 @@ public class APIServer {
         get("/hello", (req, res) -> "Hello World");
         
         get("/users/:id", (req,res) ->{
+        	Logger.getLogger("global").log(Level.INFO, "GET /users/"+req.params("id"));
         	int userId = Integer.parseInt(req.params("id"));
         	GatewayServiceClient clnt = new GatewayServiceClient();
         	Gson gson = new Gson();        	

@@ -29,21 +29,5 @@ public class AccountsRPCClient implements BookshoutAccountsService.Iface{
 	}
 	public User getUser(int id) throws TException {
 		return clnt.getUser(id);
-	}
-	
-	public static void main(String[] args){
-		BookshoutAccountsService.Iface clnt;
-		try {
-			clnt = new AccountsRPCClient("localhost", 9090);
-			thrift.User user = clnt.getUser(2);
-			System.out.println("Got user: " + user.getEmail());
-		} catch (TTransportException e) {
-			System.out.println(e.getMessage());
-			e.printStackTrace();
-		} catch (TException e) {
-			System.out.println(e.getMessage());
-			e.printStackTrace();
-		}
-
-	}
+	}	
 }
