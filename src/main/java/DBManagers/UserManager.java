@@ -12,17 +12,19 @@ import org.hibernate.cfg.Configuration;
 import Domain.Accounts.User;
 
 public class UserManager {
+
+	private static Session sessionInstance;
 	private Session session;
-	SessionFactory factory;
+	private static Session getSession() {
+		if(sessionInstance == null) {
+			SessionFactory factory = new Configuration().configure("accounts_hibernate.cfg.xml").buildSessionFactory();
+			sessionInstance = factory.openSession();
+		}
+		return sessionInstance;
+	}
 	public UserManager(){
-		factory = new Configuration().configure("accounts_hibernate.cfg.xml").buildSessionFactory();
-		session = factory.openSession();
-	}
-	
-	public void close(){
-		session.close();
-		factory.close();
-	}
+		session = UserManager.getSession();
+	}	
 	
 	public List<User> all(){
 		List<User> users = null;

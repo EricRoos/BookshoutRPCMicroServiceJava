@@ -17,7 +17,6 @@ public class PromosServiceHandler implements BookshoutPromosService.Iface{
 		thrift.Promo p = new thrift.Promo();
 		Domain.Promos.Promo domainPromo = mgr.find(id);
 		p.setName(domainPromo.getName());
-		mgr.close();
 		return p;
 	}
 

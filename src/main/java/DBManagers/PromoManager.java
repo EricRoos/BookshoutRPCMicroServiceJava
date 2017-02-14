@@ -11,18 +11,21 @@ import org.hibernate.cfg.Configuration;
 
 import Domain.Promos.Promo;
 
-public class PromoManager {
+public class PromoManager {	
+	private static Session sessionInstance;
 	private Session session;
-	SessionFactory factory;
-	public PromoManager(){
-		factory = new Configuration().configure("promos_hibernate.cfg.xml").buildSessionFactory();
-		session = factory.openSession();
+	private static Session getSession() {
+		if(sessionInstance == null) {
+			SessionFactory factory = new Configuration().configure("promos_hibernate.cfg.xml").buildSessionFactory();
+			sessionInstance = factory.openSession();
+		}
+		return sessionInstance;
 	}
 	
-	public void close(){
-		session.close();
-		factory.close();
+	public PromoManager(){
+		session = PromoManager.getSession();
 	}
+	
 	
 	public List<Promo> all(){
 		List<Promo> Promos = null;
@@ -59,6 +62,5 @@ public class PromoManager {
 	public static void main(String[] args){
 		PromoManager m = new PromoManager();
 		System.out.println(m.find(1).getName());
-		m.close();
 	}
 }

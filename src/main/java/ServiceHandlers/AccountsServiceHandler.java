@@ -12,7 +12,6 @@ public class AccountsServiceHandler implements BookshoutAccountsService.Iface{
 		UserManager mgr = new UserManager();
 		Domain.Accounts.User newUser = mgr.create("", "", email);
 		thrift.User ret = new thrift.User(newUser.getEmail());	
-		mgr.close();
 		return ret;
 	}
 
@@ -21,7 +20,6 @@ public class AccountsServiceHandler implements BookshoutAccountsService.Iface{
 		thrift.User u = new thrift.User();
 		Domain.Accounts.User domainUser = mgr.find(id);
 		u.setEmail(domainUser.getEmail());
-		mgr.close();
 		return u;
 	}
 	
