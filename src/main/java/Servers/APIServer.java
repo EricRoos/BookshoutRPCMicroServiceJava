@@ -10,7 +10,7 @@ import Clients.GatewayServiceClient;
 public class APIServer {
     public static void main(String[] args) {
         get("/hello", (req, res) -> "Hello World");
-        
+
         get("/users/:id", (req,res) ->{
         	Logger.getLogger("global").log(Level.INFO, "GET /users/"+req.params("id"));
         	int userId = Integer.parseInt(req.params("id"));
@@ -20,6 +20,7 @@ public class APIServer {
         });
         
         get("/promos/:id", (req,res) ->{
+        	Logger.getLogger("global").log(Level.INFO, "GET /promos/"+req.params("id"));
         	int promoId = Integer.parseInt(req.params("id"));
         	GatewayServiceClient clnt = new GatewayServiceClient();
         	Gson gson = new Gson();        	
