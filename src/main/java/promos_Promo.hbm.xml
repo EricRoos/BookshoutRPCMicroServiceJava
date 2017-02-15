@@ -12,7 +12,10 @@
          <generator class="native"/>
       </id>
       <property name="name" column="name" type="string"/>
-
+		<set name='promoCodes' table='promo_codes' inverse='true' lazy='true' fetch='select' batch-size='5'>
+			<key column='promo_id' not-null='true'/>
+			<one-to-many class='Domain.Promos.PromoCode'/>
+		</set>
       
    </class>
 </hibernate-mapping>

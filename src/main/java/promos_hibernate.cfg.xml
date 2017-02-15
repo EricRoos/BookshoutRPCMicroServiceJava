@@ -21,9 +21,11 @@
    <property name="hibernate.connection.password">
       cart
    </property>
+   <property name="show_sql">true</property>
 
    <!-- List of XML mapping files -->
    <mapping resource="promos_Promo.hbm.xml"/>
+   <mapping resource="promos_PromoCode.hbm.xml"/>
 
 </session-factory>
 </hibernate-configuration>

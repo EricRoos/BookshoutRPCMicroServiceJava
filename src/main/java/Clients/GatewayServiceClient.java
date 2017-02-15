@@ -6,7 +6,7 @@ import org.apache.thrift.TException;
 
 import thrift.BookshoutAccountsService;
 import thrift.BookshoutPromosService;
-
+import thrift.EntityList;
 import thrift.Promo;
 import thrift.PromoCode;
 import thrift.User;
@@ -45,9 +45,11 @@ public class GatewayServiceClient implements BookshoutAccountsService.Iface,
 	}
 
 	@Override
-	public List<PromoCode> getPromoCodes(Promo promo) throws TException {
-		// TODO Auto-generated method stub
-		return null;
+	public EntityList getPromoCodes(Promo promo) throws TException {
+		PromosRPCClient clnt = new PromosRPCClient("localhost", 9091);
+		EntityList codes = clnt.getPromoCodes(promo);
+		clnt.close();
+		return codes;
 	}
 
 }

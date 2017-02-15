@@ -12,8 +12,10 @@ import org.apache.thrift.transport.TTransportException;
 
 
 import thrift.BookshoutPromosService;
+import thrift.EntityList;
 import thrift.Promo;
 import thrift.PromoCode;
+
 
 public class PromosRPCClient implements BookshoutPromosService.Iface{
 	private TTransport transport;
@@ -42,9 +44,10 @@ public class PromosRPCClient implements BookshoutPromosService.Iface{
 	}
 
 	@Override
-	public List<PromoCode> getPromoCodes(Promo promo) throws TException {
-		// TODO Auto-generated method stub
-		return null;
+	public EntityList getPromoCodes(Promo promo) throws TException {
+		return clnt.getPromoCodes(promo);
 	}
+
+	
 
 }

@@ -1,13 +1,18 @@
 package ServiceHandlers;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.thrift.TException;
 
+import DBManagers.PaginatedQueryResponse;
 import DBManagers.PromoManager;
 import thrift.BookshoutPromosService;
+import thrift.EntityList;
+import thrift.ListData;
 import thrift.Promo;
 import thrift.PromoCode;
+
 
 public class PromosServiceHandler implements BookshoutPromosService.Iface{
 
@@ -27,9 +32,33 @@ public class PromosServiceHandler implements BookshoutPromosService.Iface{
 	}
 
 	@Override
-	public List<PromoCode> getPromoCodes(Promo promo) throws TException {
-		// TODO Auto-generated method stub
-		return null;
+	public EntityList getPromoCodes(Promo promo) throws TException {
+		int page = 1;
+		int perPage = 10;
+		Domain.Promos.Promo domainPromo = new Domain.Promos.Promo();
+		domainPromo.setId(promo.getId());
+		
+		PromoManager mgr = new PromoManager();
+		
+
+		PaginatedQueryResponse<Domain.Promos.PromoCode> resp = mgr.getPaginatedPromoCodes(domainPromo, page, perPage);
+		
+		
+		EntityList list = new EntityList();
+		ListData data = new ListData();
+		data.setPromoCodes(
+			resp.getData().stream().map( (code) ->
+				new thrift.PromoCode(promo, code.getCustomCode())
+			).collect(Collectors.toList())	
+		);
+		
+		list.setData(data);
+		list.setCurrentPage(page);
+		list.setNumRecords(resp.getNumRecords());
+		list.setPageSize(resp.getPageSize());
+		
+		return list;
+				
 	}
 
 }

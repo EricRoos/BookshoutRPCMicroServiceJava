@@ -4,18 +4,16 @@
  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
 
 <hibernate-mapping>
-   <class name="Domain.Promos.Promo" table="promos">
+   <class name="Domain.Promos.PromoCode" table="promo_codes">
       <meta attribute="class-description">
          This class contains the employee detail. 
       </meta>
       <id name="id" type="int" column="id">
          <generator class="native"/>
       </id>
-      <property name="name" column="name" type="string"/>
-		<set name='promoCodes' table='promo_codes' inverse='true' lazy='true' fetch='select' batch-size='5'>
-			<key column='promo_id' not-null='true'/>
-			<one-to-many class='Domain.Promos.PromoCode'/>
-		</set>
-      
+      <property name="customCode" type="string" column='custom_code'/>
+	  <many-to-one name="promo" class="Domain.Promos.Promo" fetch="select">
+	  	<column name="promo_id" not-null="true"/>
+	  </many-to-one>      
    </class>
 </hibernate-mapping>
