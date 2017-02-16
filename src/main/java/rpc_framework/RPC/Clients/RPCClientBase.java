@@ -7,17 +7,18 @@ import org.apache.thrift.transport.TSocket;
 import org.apache.thrift.transport.TTransport;
 
 public class RPCClientBase {
-	private TTransport transport;
-	protected TServiceClient clnt;
-	public RPCClientBase(Class<? extends org.apache.thrift.TServiceClient> clazz, String host, int port) throws Exception {
-		transport = new TSocket(host, port);
-		transport.open();
-		TProtocol protocol = new  TBinaryProtocol(transport);
-		clnt = clazz.getConstructor(TProtocol.class).newInstance(protocol);
-	}
-	
-	
-	public void close(){
-		transport.close();
-	}
+    private TTransport       transport;
+    protected TServiceClient clnt;
+
+    public RPCClientBase(Class<? extends org.apache.thrift.TServiceClient> clazz, String host, int port)
+            throws Exception {
+        transport = new TSocket(host, port);
+        transport.open();
+        TProtocol protocol = new TBinaryProtocol(transport);
+        clnt = clazz.getConstructor(TProtocol.class).newInstance(protocol);
+    }
+
+    public void close() {
+        transport.close();
+    }
 }

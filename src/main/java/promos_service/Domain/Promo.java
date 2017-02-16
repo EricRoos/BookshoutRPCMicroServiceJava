@@ -3,44 +3,43 @@ package Domain;
 import java.util.HashSet;
 import java.util.Set;
 
-
 public class Promo {
-	private int id;
-	private String name;
-	private Set<PromoCode> promoCodes = new HashSet<PromoCode>(0);
-	
-	public Promo() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+    private int            id;
+    private String         name;
+    private Set<PromoCode> promoCodes = new HashSet<PromoCode>(0);
 
-	public Promo(String name) {
-		super();
-		this.name = name;
-	}
+    public Promo() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
-	public int getId() {
-		return id;
-	}
+    public Promo(String name) {
+        super();
+        this.name = name;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	public Set<PromoCode> getPromoCodes() {
-		return promoCodes;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setPromoCodes(Set<PromoCode> promoCodes) {
-		this.promoCodes = promoCodes;
-	}
-	
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<PromoCode> getPromoCodes() {
+        return promoCodes;
+    }
+
+    public void setPromoCodes(Set<PromoCode> promoCodes) {
+        this.promoCodes = promoCodes;
+    }
+
 }
