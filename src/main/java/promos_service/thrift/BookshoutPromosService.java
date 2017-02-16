@@ -55,10 +55,12 @@ public class BookshoutPromosService {
   public static class Client extends org.apache.thrift.TServiceClient implements Iface {
     public static class Factory implements org.apache.thrift.TServiceClientFactory<Client> {
       public Factory() {}
-      public Client getClient(org.apache.thrift.protocol.TProtocol prot) {
+      @Override
+    public Client getClient(org.apache.thrift.protocol.TProtocol prot) {
         return new Client(prot);
       }
-      public Client getClient(org.apache.thrift.protocol.TProtocol iprot, org.apache.thrift.protocol.TProtocol oprot) {
+      @Override
+    public Client getClient(org.apache.thrift.protocol.TProtocol iprot, org.apache.thrift.protocol.TProtocol oprot) {
         return new Client(iprot, oprot);
       }
     }
@@ -72,6 +74,7 @@ public class BookshoutPromosService {
       super(iprot, oprot);
     }
 
+    @Override
     public Promo getPromo(int id) throws org.apache.thrift.TException
     {
       send_getPromo(id);
@@ -95,6 +98,7 @@ public class BookshoutPromosService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "getPromo failed: unknown result");
     }
 
+    @Override
     public PromoCode createCode(Promo promo) throws org.apache.thrift.TException
     {
       send_createCode(promo);
@@ -118,6 +122,7 @@ public class BookshoutPromosService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "createCode failed: unknown result");
     }
 
+    @Override
     public EntityList getPromoCodes(Promo promo) throws org.apache.thrift.TException
     {
       send_getPromoCodes(promo);
@@ -150,7 +155,8 @@ public class BookshoutPromosService {
         this.clientManager = clientManager;
         this.protocolFactory = protocolFactory;
       }
-      public AsyncClient getAsyncClient(org.apache.thrift.transport.TNonblockingTransport transport) {
+      @Override
+    public AsyncClient getAsyncClient(org.apache.thrift.transport.TNonblockingTransport transport) {
         return new AsyncClient(protocolFactory, clientManager, transport);
       }
     }
@@ -159,6 +165,7 @@ public class BookshoutPromosService {
       super(protocolFactory, clientManager, transport);
     }
 
+    @Override
     public void getPromo(int id, org.apache.thrift.async.AsyncMethodCallback resultHandler) throws org.apache.thrift.TException {
       checkReady();
       getPromo_call method_call = new getPromo_call(id, resultHandler, this, ___protocolFactory, ___transport);
@@ -173,7 +180,8 @@ public class BookshoutPromosService {
         this.id = id;
       }
 
-      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
+      @Override
+    public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("getPromo", org.apache.thrift.protocol.TMessageType.CALL, 0));
         getPromo_args args = new getPromo_args();
         args.setId(id);
@@ -191,6 +199,7 @@ public class BookshoutPromosService {
       }
     }
 
+    @Override
     public void createCode(Promo promo, org.apache.thrift.async.AsyncMethodCallback resultHandler) throws org.apache.thrift.TException {
       checkReady();
       createCode_call method_call = new createCode_call(promo, resultHandler, this, ___protocolFactory, ___transport);
@@ -205,7 +214,8 @@ public class BookshoutPromosService {
         this.promo = promo;
       }
 
-      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
+      @Override
+    public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("createCode", org.apache.thrift.protocol.TMessageType.CALL, 0));
         createCode_args args = new createCode_args();
         args.setPromo(promo);
@@ -223,6 +233,7 @@ public class BookshoutPromosService {
       }
     }
 
+    @Override
     public void getPromoCodes(Promo promo, org.apache.thrift.async.AsyncMethodCallback resultHandler) throws org.apache.thrift.TException {
       checkReady();
       getPromoCodes_call method_call = new getPromoCodes_call(promo, resultHandler, this, ___protocolFactory, ___transport);
@@ -237,7 +248,8 @@ public class BookshoutPromosService {
         this.promo = promo;
       }
 
-      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
+      @Override
+    public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("getPromoCodes", org.apache.thrift.protocol.TMessageType.CALL, 0));
         getPromoCodes_args args = new getPromoCodes_args();
         args.setPromo(promo);
@@ -279,15 +291,18 @@ public class BookshoutPromosService {
         super("getPromo");
       }
 
-      public getPromo_args getEmptyArgsInstance() {
+      @Override
+    public getPromo_args getEmptyArgsInstance() {
         return new getPromo_args();
       }
 
-      protected boolean isOneway() {
+      @Override
+    protected boolean isOneway() {
         return false;
       }
 
-      public getPromo_result getResult(I iface, getPromo_args args) throws org.apache.thrift.TException {
+      @Override
+    public getPromo_result getResult(I iface, getPromo_args args) throws org.apache.thrift.TException {
         getPromo_result result = new getPromo_result();
         result.success = iface.getPromo(args.id);
         return result;
@@ -299,15 +314,18 @@ public class BookshoutPromosService {
         super("createCode");
       }
 
-      public createCode_args getEmptyArgsInstance() {
+      @Override
+    public createCode_args getEmptyArgsInstance() {
         return new createCode_args();
       }
 
-      protected boolean isOneway() {
+      @Override
+    protected boolean isOneway() {
         return false;
       }
 
-      public createCode_result getResult(I iface, createCode_args args) throws org.apache.thrift.TException {
+      @Override
+    public createCode_result getResult(I iface, createCode_args args) throws org.apache.thrift.TException {
         createCode_result result = new createCode_result();
         result.success = iface.createCode(args.promo);
         return result;
@@ -319,15 +337,18 @@ public class BookshoutPromosService {
         super("getPromoCodes");
       }
 
-      public getPromoCodes_args getEmptyArgsInstance() {
+      @Override
+    public getPromoCodes_args getEmptyArgsInstance() {
         return new getPromoCodes_args();
       }
 
-      protected boolean isOneway() {
+      @Override
+    protected boolean isOneway() {
         return false;
       }
 
-      public getPromoCodes_result getResult(I iface, getPromoCodes_args args) throws org.apache.thrift.TException {
+      @Override
+    public getPromoCodes_result getResult(I iface, getPromoCodes_args args) throws org.apache.thrift.TException {
         getPromoCodes_result result = new getPromoCodes_result();
         result.success = iface.getPromoCodes(args.promo);
         return result;
@@ -358,14 +379,17 @@ public class BookshoutPromosService {
         super("getPromo");
       }
 
-      public getPromo_args getEmptyArgsInstance() {
+      @Override
+    public getPromo_args getEmptyArgsInstance() {
         return new getPromo_args();
       }
 
-      public AsyncMethodCallback<Promo> getResultHandler(final AsyncFrameBuffer fb, final int seqid) {
+      @Override
+    public AsyncMethodCallback<Promo> getResultHandler(final AsyncFrameBuffer fb, final int seqid) {
         final org.apache.thrift.AsyncProcessFunction fcall = this;
         return new AsyncMethodCallback<Promo>() { 
-          public void onComplete(Promo o) {
+          @Override
+        public void onComplete(Promo o) {
             getPromo_result result = new getPromo_result();
             result.success = o;
             try {
@@ -376,7 +400,8 @@ public class BookshoutPromosService {
             }
             fb.close();
           }
-          public void onError(Exception e) {
+          @Override
+        public void onError(Exception e) {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             getPromo_result result = new getPromo_result();
@@ -395,11 +420,13 @@ public class BookshoutPromosService {
         };
       }
 
-      protected boolean isOneway() {
+      @Override
+    protected boolean isOneway() {
         return false;
       }
 
-      public void start(I iface, getPromo_args args, org.apache.thrift.async.AsyncMethodCallback<Promo> resultHandler) throws TException {
+      @Override
+    public void start(I iface, getPromo_args args, org.apache.thrift.async.AsyncMethodCallback<Promo> resultHandler) throws TException {
         iface.getPromo(args.id,resultHandler);
       }
     }
@@ -409,14 +436,17 @@ public class BookshoutPromosService {
         super("createCode");
       }
 
-      public createCode_args getEmptyArgsInstance() {
+      @Override
+    public createCode_args getEmptyArgsInstance() {
         return new createCode_args();
       }
 
-      public AsyncMethodCallback<PromoCode> getResultHandler(final AsyncFrameBuffer fb, final int seqid) {
+      @Override
+    public AsyncMethodCallback<PromoCode> getResultHandler(final AsyncFrameBuffer fb, final int seqid) {
         final org.apache.thrift.AsyncProcessFunction fcall = this;
         return new AsyncMethodCallback<PromoCode>() { 
-          public void onComplete(PromoCode o) {
+          @Override
+        public void onComplete(PromoCode o) {
             createCode_result result = new createCode_result();
             result.success = o;
             try {
@@ -427,7 +457,8 @@ public class BookshoutPromosService {
             }
             fb.close();
           }
-          public void onError(Exception e) {
+          @Override
+        public void onError(Exception e) {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             createCode_result result = new createCode_result();
@@ -446,11 +477,13 @@ public class BookshoutPromosService {
         };
       }
 
-      protected boolean isOneway() {
+      @Override
+    protected boolean isOneway() {
         return false;
       }
 
-      public void start(I iface, createCode_args args, org.apache.thrift.async.AsyncMethodCallback<PromoCode> resultHandler) throws TException {
+      @Override
+    public void start(I iface, createCode_args args, org.apache.thrift.async.AsyncMethodCallback<PromoCode> resultHandler) throws TException {
         iface.createCode(args.promo,resultHandler);
       }
     }
@@ -460,14 +493,17 @@ public class BookshoutPromosService {
         super("getPromoCodes");
       }
 
-      public getPromoCodes_args getEmptyArgsInstance() {
+      @Override
+    public getPromoCodes_args getEmptyArgsInstance() {
         return new getPromoCodes_args();
       }
 
-      public AsyncMethodCallback<EntityList> getResultHandler(final AsyncFrameBuffer fb, final int seqid) {
+      @Override
+    public AsyncMethodCallback<EntityList> getResultHandler(final AsyncFrameBuffer fb, final int seqid) {
         final org.apache.thrift.AsyncProcessFunction fcall = this;
         return new AsyncMethodCallback<EntityList>() { 
-          public void onComplete(EntityList o) {
+          @Override
+        public void onComplete(EntityList o) {
             getPromoCodes_result result = new getPromoCodes_result();
             result.success = o;
             try {
@@ -478,7 +514,8 @@ public class BookshoutPromosService {
             }
             fb.close();
           }
-          public void onError(Exception e) {
+          @Override
+        public void onError(Exception e) {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             getPromoCodes_result result = new getPromoCodes_result();
@@ -497,11 +534,13 @@ public class BookshoutPromosService {
         };
       }
 
-      protected boolean isOneway() {
+      @Override
+    protected boolean isOneway() {
         return false;
       }
 
-      public void start(I iface, getPromoCodes_args args, org.apache.thrift.async.AsyncMethodCallback<EntityList> resultHandler) throws TException {
+      @Override
+    public void start(I iface, getPromoCodes_args args, org.apache.thrift.async.AsyncMethodCallback<EntityList> resultHandler) throws TException {
         iface.getPromoCodes(args.promo,resultHandler);
       }
     }
@@ -570,11 +609,13 @@ public class BookshoutPromosService {
         _fieldName = fieldName;
       }
 
-      public short getThriftFieldId() {
+      @Override
+    public short getThriftFieldId() {
         return _thriftId;
       }
 
-      public String getFieldName() {
+      @Override
+    public String getFieldName() {
         return _fieldName;
       }
     }
@@ -610,6 +651,7 @@ public class BookshoutPromosService {
       this.id = other.id;
     }
 
+    @Override
     public getPromo_args deepCopy() {
       return new getPromo_args(this);
     }
@@ -643,6 +685,7 @@ public class BookshoutPromosService {
       __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __ID_ISSET_ID, value);
     }
 
+    @Override
     public void setFieldValue(_Fields field, Object value) {
       switch (field) {
       case ID:
@@ -656,6 +699,7 @@ public class BookshoutPromosService {
       }
     }
 
+    @Override
     public Object getFieldValue(_Fields field) {
       switch (field) {
       case ID:
@@ -666,6 +710,7 @@ public class BookshoutPromosService {
     }
 
     /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+    @Override
     public boolean isSet(_Fields field) {
       if (field == null) {
         throw new IllegalArgumentException();
@@ -736,14 +781,17 @@ public class BookshoutPromosService {
       return 0;
     }
 
+    @Override
     public _Fields fieldForId(int fieldId) {
       return _Fields.findByThriftId(fieldId);
     }
 
+    @Override
     public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
+    @Override
     public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
     }
@@ -784,14 +832,16 @@ public class BookshoutPromosService {
     }
 
     private static class getPromo_argsStandardSchemeFactory implements SchemeFactory {
-      public getPromo_argsStandardScheme getScheme() {
+      @Override
+    public getPromo_argsStandardScheme getScheme() {
         return new getPromo_argsStandardScheme();
       }
     }
 
     private static class getPromo_argsStandardScheme extends StandardScheme<getPromo_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, getPromo_args struct) throws org.apache.thrift.TException {
+      @Override
+    public void read(org.apache.thrift.protocol.TProtocol iprot, getPromo_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -820,7 +870,8 @@ public class BookshoutPromosService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, getPromo_args struct) throws org.apache.thrift.TException {
+      @Override
+    public void write(org.apache.thrift.protocol.TProtocol oprot, getPromo_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -834,7 +885,8 @@ public class BookshoutPromosService {
     }
 
     private static class getPromo_argsTupleSchemeFactory implements SchemeFactory {
-      public getPromo_argsTupleScheme getScheme() {
+      @Override
+    public getPromo_argsTupleScheme getScheme() {
         return new getPromo_argsTupleScheme();
       }
     }
@@ -929,11 +981,13 @@ public class BookshoutPromosService {
         _fieldName = fieldName;
       }
 
-      public short getThriftFieldId() {
+      @Override
+    public short getThriftFieldId() {
         return _thriftId;
       }
 
-      public String getFieldName() {
+      @Override
+    public String getFieldName() {
         return _fieldName;
       }
     }
@@ -967,6 +1021,7 @@ public class BookshoutPromosService {
       }
     }
 
+    @Override
     public getPromo_result deepCopy() {
       return new getPromo_result(this);
     }
@@ -1000,6 +1055,7 @@ public class BookshoutPromosService {
       }
     }
 
+    @Override
     public void setFieldValue(_Fields field, Object value) {
       switch (field) {
       case SUCCESS:
@@ -1013,6 +1069,7 @@ public class BookshoutPromosService {
       }
     }
 
+    @Override
     public Object getFieldValue(_Fields field) {
       switch (field) {
       case SUCCESS:
@@ -1023,6 +1080,7 @@ public class BookshoutPromosService {
     }
 
     /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+    @Override
     public boolean isSet(_Fields field) {
       if (field == null) {
         throw new IllegalArgumentException();
@@ -1093,14 +1151,17 @@ public class BookshoutPromosService {
       return 0;
     }
 
+    @Override
     public _Fields fieldForId(int fieldId) {
       return _Fields.findByThriftId(fieldId);
     }
 
+    @Override
     public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
+    @Override
     public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
       }
@@ -1146,14 +1207,16 @@ public class BookshoutPromosService {
     }
 
     private static class getPromo_resultStandardSchemeFactory implements SchemeFactory {
-      public getPromo_resultStandardScheme getScheme() {
+      @Override
+    public getPromo_resultStandardScheme getScheme() {
         return new getPromo_resultStandardScheme();
       }
     }
 
     private static class getPromo_resultStandardScheme extends StandardScheme<getPromo_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, getPromo_result struct) throws org.apache.thrift.TException {
+      @Override
+    public void read(org.apache.thrift.protocol.TProtocol iprot, getPromo_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -1183,7 +1246,8 @@ public class BookshoutPromosService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, getPromo_result struct) throws org.apache.thrift.TException {
+      @Override
+    public void write(org.apache.thrift.protocol.TProtocol oprot, getPromo_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -1199,7 +1263,8 @@ public class BookshoutPromosService {
     }
 
     private static class getPromo_resultTupleSchemeFactory implements SchemeFactory {
-      public getPromo_resultTupleScheme getScheme() {
+      @Override
+    public getPromo_resultTupleScheme getScheme() {
         return new getPromo_resultTupleScheme();
       }
     }
@@ -1295,11 +1360,13 @@ public class BookshoutPromosService {
         _fieldName = fieldName;
       }
 
-      public short getThriftFieldId() {
+      @Override
+    public short getThriftFieldId() {
         return _thriftId;
       }
 
-      public String getFieldName() {
+      @Override
+    public String getFieldName() {
         return _fieldName;
       }
     }
@@ -1333,6 +1400,7 @@ public class BookshoutPromosService {
       }
     }
 
+    @Override
     public createCode_args deepCopy() {
       return new createCode_args(this);
     }
@@ -1366,6 +1434,7 @@ public class BookshoutPromosService {
       }
     }
 
+    @Override
     public void setFieldValue(_Fields field, Object value) {
       switch (field) {
       case PROMO:
@@ -1379,6 +1448,7 @@ public class BookshoutPromosService {
       }
     }
 
+    @Override
     public Object getFieldValue(_Fields field) {
       switch (field) {
       case PROMO:
@@ -1389,6 +1459,7 @@ public class BookshoutPromosService {
     }
 
     /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+    @Override
     public boolean isSet(_Fields field) {
       if (field == null) {
         throw new IllegalArgumentException();
@@ -1459,14 +1530,17 @@ public class BookshoutPromosService {
       return 0;
     }
 
+    @Override
     public _Fields fieldForId(int fieldId) {
       return _Fields.findByThriftId(fieldId);
     }
 
+    @Override
     public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
+    @Override
     public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
     }
@@ -1512,14 +1586,16 @@ public class BookshoutPromosService {
     }
 
     private static class createCode_argsStandardSchemeFactory implements SchemeFactory {
-      public createCode_argsStandardScheme getScheme() {
+      @Override
+    public createCode_argsStandardScheme getScheme() {
         return new createCode_argsStandardScheme();
       }
     }
 
     private static class createCode_argsStandardScheme extends StandardScheme<createCode_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, createCode_args struct) throws org.apache.thrift.TException {
+      @Override
+    public void read(org.apache.thrift.protocol.TProtocol iprot, createCode_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -1549,7 +1625,8 @@ public class BookshoutPromosService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, createCode_args struct) throws org.apache.thrift.TException {
+      @Override
+    public void write(org.apache.thrift.protocol.TProtocol oprot, createCode_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -1565,7 +1642,8 @@ public class BookshoutPromosService {
     }
 
     private static class createCode_argsTupleSchemeFactory implements SchemeFactory {
-      public createCode_argsTupleScheme getScheme() {
+      @Override
+    public createCode_argsTupleScheme getScheme() {
         return new createCode_argsTupleScheme();
       }
     }
@@ -1661,11 +1739,13 @@ public class BookshoutPromosService {
         _fieldName = fieldName;
       }
 
-      public short getThriftFieldId() {
+      @Override
+    public short getThriftFieldId() {
         return _thriftId;
       }
 
-      public String getFieldName() {
+      @Override
+    public String getFieldName() {
         return _fieldName;
       }
     }
@@ -1699,6 +1779,7 @@ public class BookshoutPromosService {
       }
     }
 
+    @Override
     public createCode_result deepCopy() {
       return new createCode_result(this);
     }
@@ -1732,6 +1813,7 @@ public class BookshoutPromosService {
       }
     }
 
+    @Override
     public void setFieldValue(_Fields field, Object value) {
       switch (field) {
       case SUCCESS:
@@ -1745,6 +1827,7 @@ public class BookshoutPromosService {
       }
     }
 
+    @Override
     public Object getFieldValue(_Fields field) {
       switch (field) {
       case SUCCESS:
@@ -1755,6 +1838,7 @@ public class BookshoutPromosService {
     }
 
     /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+    @Override
     public boolean isSet(_Fields field) {
       if (field == null) {
         throw new IllegalArgumentException();
@@ -1825,14 +1909,17 @@ public class BookshoutPromosService {
       return 0;
     }
 
+    @Override
     public _Fields fieldForId(int fieldId) {
       return _Fields.findByThriftId(fieldId);
     }
 
+    @Override
     public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
+    @Override
     public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
       }
@@ -1878,14 +1965,16 @@ public class BookshoutPromosService {
     }
 
     private static class createCode_resultStandardSchemeFactory implements SchemeFactory {
-      public createCode_resultStandardScheme getScheme() {
+      @Override
+    public createCode_resultStandardScheme getScheme() {
         return new createCode_resultStandardScheme();
       }
     }
 
     private static class createCode_resultStandardScheme extends StandardScheme<createCode_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, createCode_result struct) throws org.apache.thrift.TException {
+      @Override
+    public void read(org.apache.thrift.protocol.TProtocol iprot, createCode_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -1915,7 +2004,8 @@ public class BookshoutPromosService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, createCode_result struct) throws org.apache.thrift.TException {
+      @Override
+    public void write(org.apache.thrift.protocol.TProtocol oprot, createCode_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -1931,7 +2021,8 @@ public class BookshoutPromosService {
     }
 
     private static class createCode_resultTupleSchemeFactory implements SchemeFactory {
-      public createCode_resultTupleScheme getScheme() {
+      @Override
+    public createCode_resultTupleScheme getScheme() {
         return new createCode_resultTupleScheme();
       }
     }
@@ -2027,11 +2118,13 @@ public class BookshoutPromosService {
         _fieldName = fieldName;
       }
 
-      public short getThriftFieldId() {
+      @Override
+    public short getThriftFieldId() {
         return _thriftId;
       }
 
-      public String getFieldName() {
+      @Override
+    public String getFieldName() {
         return _fieldName;
       }
     }
@@ -2065,6 +2158,7 @@ public class BookshoutPromosService {
       }
     }
 
+    @Override
     public getPromoCodes_args deepCopy() {
       return new getPromoCodes_args(this);
     }
@@ -2098,6 +2192,7 @@ public class BookshoutPromosService {
       }
     }
 
+    @Override
     public void setFieldValue(_Fields field, Object value) {
       switch (field) {
       case PROMO:
@@ -2111,6 +2206,7 @@ public class BookshoutPromosService {
       }
     }
 
+    @Override
     public Object getFieldValue(_Fields field) {
       switch (field) {
       case PROMO:
@@ -2121,6 +2217,7 @@ public class BookshoutPromosService {
     }
 
     /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+    @Override
     public boolean isSet(_Fields field) {
       if (field == null) {
         throw new IllegalArgumentException();
@@ -2191,14 +2288,17 @@ public class BookshoutPromosService {
       return 0;
     }
 
+    @Override
     public _Fields fieldForId(int fieldId) {
       return _Fields.findByThriftId(fieldId);
     }
 
+    @Override
     public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
+    @Override
     public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
     }
@@ -2244,14 +2344,16 @@ public class BookshoutPromosService {
     }
 
     private static class getPromoCodes_argsStandardSchemeFactory implements SchemeFactory {
-      public getPromoCodes_argsStandardScheme getScheme() {
+      @Override
+    public getPromoCodes_argsStandardScheme getScheme() {
         return new getPromoCodes_argsStandardScheme();
       }
     }
 
     private static class getPromoCodes_argsStandardScheme extends StandardScheme<getPromoCodes_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, getPromoCodes_args struct) throws org.apache.thrift.TException {
+      @Override
+    public void read(org.apache.thrift.protocol.TProtocol iprot, getPromoCodes_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -2281,7 +2383,8 @@ public class BookshoutPromosService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, getPromoCodes_args struct) throws org.apache.thrift.TException {
+      @Override
+    public void write(org.apache.thrift.protocol.TProtocol oprot, getPromoCodes_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -2297,7 +2400,8 @@ public class BookshoutPromosService {
     }
 
     private static class getPromoCodes_argsTupleSchemeFactory implements SchemeFactory {
-      public getPromoCodes_argsTupleScheme getScheme() {
+      @Override
+    public getPromoCodes_argsTupleScheme getScheme() {
         return new getPromoCodes_argsTupleScheme();
       }
     }
@@ -2393,11 +2497,13 @@ public class BookshoutPromosService {
         _fieldName = fieldName;
       }
 
-      public short getThriftFieldId() {
+      @Override
+    public short getThriftFieldId() {
         return _thriftId;
       }
 
-      public String getFieldName() {
+      @Override
+    public String getFieldName() {
         return _fieldName;
       }
     }
@@ -2431,6 +2537,7 @@ public class BookshoutPromosService {
       }
     }
 
+    @Override
     public getPromoCodes_result deepCopy() {
       return new getPromoCodes_result(this);
     }
@@ -2464,6 +2571,7 @@ public class BookshoutPromosService {
       }
     }
 
+    @Override
     public void setFieldValue(_Fields field, Object value) {
       switch (field) {
       case SUCCESS:
@@ -2477,6 +2585,7 @@ public class BookshoutPromosService {
       }
     }
 
+    @Override
     public Object getFieldValue(_Fields field) {
       switch (field) {
       case SUCCESS:
@@ -2487,6 +2596,7 @@ public class BookshoutPromosService {
     }
 
     /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+    @Override
     public boolean isSet(_Fields field) {
       if (field == null) {
         throw new IllegalArgumentException();
@@ -2557,14 +2667,17 @@ public class BookshoutPromosService {
       return 0;
     }
 
+    @Override
     public _Fields fieldForId(int fieldId) {
       return _Fields.findByThriftId(fieldId);
     }
 
+    @Override
     public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
+    @Override
     public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
       }
@@ -2610,14 +2723,16 @@ public class BookshoutPromosService {
     }
 
     private static class getPromoCodes_resultStandardSchemeFactory implements SchemeFactory {
-      public getPromoCodes_resultStandardScheme getScheme() {
+      @Override
+    public getPromoCodes_resultStandardScheme getScheme() {
         return new getPromoCodes_resultStandardScheme();
       }
     }
 
     private static class getPromoCodes_resultStandardScheme extends StandardScheme<getPromoCodes_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, getPromoCodes_result struct) throws org.apache.thrift.TException {
+      @Override
+    public void read(org.apache.thrift.protocol.TProtocol iprot, getPromoCodes_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -2647,7 +2762,8 @@ public class BookshoutPromosService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, getPromoCodes_result struct) throws org.apache.thrift.TException {
+      @Override
+    public void write(org.apache.thrift.protocol.TProtocol oprot, getPromoCodes_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -2663,7 +2779,8 @@ public class BookshoutPromosService {
     }
 
     private static class getPromoCodes_resultTupleSchemeFactory implements SchemeFactory {
-      public getPromoCodes_resultTupleScheme getScheme() {
+      @Override
+    public getPromoCodes_resultTupleScheme getScheme() {
         return new getPromoCodes_resultTupleScheme();
       }
     }

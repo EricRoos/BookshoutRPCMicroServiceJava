@@ -24,10 +24,12 @@ public class AccountsRPCClient implements BookshoutAccountsService.Iface{
 		transport.close();
 	}
 	
-	public User createUser(String email, String password) throws TException {
+	@Override
+    public User createUser(String email, String password) throws TException {
 		return clnt.createUser(email, password);
 	}
-	public User getUser(int id) throws TException {
+	@Override
+    public User getUser(int id) throws TException {
 		return clnt.getUser(id);
 	}	
 }

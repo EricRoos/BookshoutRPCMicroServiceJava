@@ -15,7 +15,8 @@ public abstract class RPCServerBase {
 		TServer server = new TSimpleServer(new Args(serverTransport).processor(getProcessor()));
 		warmResources();
 		Runnable simple = new Runnable(){
-			public void run() {
+			@Override
+            public void run() {
 				server.serve();				
 			}	
 		};

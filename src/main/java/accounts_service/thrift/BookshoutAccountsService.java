@@ -51,10 +51,12 @@ public class BookshoutAccountsService {
   public static class Client extends org.apache.thrift.TServiceClient implements Iface {
     public static class Factory implements org.apache.thrift.TServiceClientFactory<Client> {
       public Factory() {}
-      public Client getClient(org.apache.thrift.protocol.TProtocol prot) {
+      @Override
+    public Client getClient(org.apache.thrift.protocol.TProtocol prot) {
         return new Client(prot);
       }
-      public Client getClient(org.apache.thrift.protocol.TProtocol iprot, org.apache.thrift.protocol.TProtocol oprot) {
+      @Override
+    public Client getClient(org.apache.thrift.protocol.TProtocol iprot, org.apache.thrift.protocol.TProtocol oprot) {
         return new Client(iprot, oprot);
       }
     }
@@ -68,6 +70,7 @@ public class BookshoutAccountsService {
       super(iprot, oprot);
     }
 
+    @Override
     public User createUser(String email, String password) throws org.apache.thrift.TException
     {
       send_createUser(email, password);
@@ -92,6 +95,7 @@ public class BookshoutAccountsService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "createUser failed: unknown result");
     }
 
+    @Override
     public User getUser(int id) throws org.apache.thrift.TException
     {
       send_getUser(id);
@@ -124,7 +128,8 @@ public class BookshoutAccountsService {
         this.clientManager = clientManager;
         this.protocolFactory = protocolFactory;
       }
-      public AsyncClient getAsyncClient(org.apache.thrift.transport.TNonblockingTransport transport) {
+      @Override
+    public AsyncClient getAsyncClient(org.apache.thrift.transport.TNonblockingTransport transport) {
         return new AsyncClient(protocolFactory, clientManager, transport);
       }
     }
@@ -133,6 +138,7 @@ public class BookshoutAccountsService {
       super(protocolFactory, clientManager, transport);
     }
 
+    @Override
     public void createUser(String email, String password, org.apache.thrift.async.AsyncMethodCallback resultHandler) throws org.apache.thrift.TException {
       checkReady();
       createUser_call method_call = new createUser_call(email, password, resultHandler, this, ___protocolFactory, ___transport);
@@ -149,7 +155,8 @@ public class BookshoutAccountsService {
         this.password = password;
       }
 
-      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
+      @Override
+    public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("createUser", org.apache.thrift.protocol.TMessageType.CALL, 0));
         createUser_args args = new createUser_args();
         args.setEmail(email);
@@ -168,6 +175,7 @@ public class BookshoutAccountsService {
       }
     }
 
+    @Override
     public void getUser(int id, org.apache.thrift.async.AsyncMethodCallback resultHandler) throws org.apache.thrift.TException {
       checkReady();
       getUser_call method_call = new getUser_call(id, resultHandler, this, ___protocolFactory, ___transport);
@@ -182,7 +190,8 @@ public class BookshoutAccountsService {
         this.id = id;
       }
 
-      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
+      @Override
+    public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("getUser", org.apache.thrift.protocol.TMessageType.CALL, 0));
         getUser_args args = new getUser_args();
         args.setId(id);
@@ -223,15 +232,18 @@ public class BookshoutAccountsService {
         super("createUser");
       }
 
-      public createUser_args getEmptyArgsInstance() {
+      @Override
+    public createUser_args getEmptyArgsInstance() {
         return new createUser_args();
       }
 
-      protected boolean isOneway() {
+      @Override
+    protected boolean isOneway() {
         return false;
       }
 
-      public createUser_result getResult(I iface, createUser_args args) throws org.apache.thrift.TException {
+      @Override
+    public createUser_result getResult(I iface, createUser_args args) throws org.apache.thrift.TException {
         createUser_result result = new createUser_result();
         result.success = iface.createUser(args.email, args.password);
         return result;
@@ -243,15 +255,18 @@ public class BookshoutAccountsService {
         super("getUser");
       }
 
-      public getUser_args getEmptyArgsInstance() {
+      @Override
+    public getUser_args getEmptyArgsInstance() {
         return new getUser_args();
       }
 
-      protected boolean isOneway() {
+      @Override
+    protected boolean isOneway() {
         return false;
       }
 
-      public getUser_result getResult(I iface, getUser_args args) throws org.apache.thrift.TException {
+      @Override
+    public getUser_result getResult(I iface, getUser_args args) throws org.apache.thrift.TException {
         getUser_result result = new getUser_result();
         result.success = iface.getUser(args.id);
         return result;
@@ -281,14 +296,17 @@ public class BookshoutAccountsService {
         super("createUser");
       }
 
-      public createUser_args getEmptyArgsInstance() {
+      @Override
+    public createUser_args getEmptyArgsInstance() {
         return new createUser_args();
       }
 
-      public AsyncMethodCallback<User> getResultHandler(final AsyncFrameBuffer fb, final int seqid) {
+      @Override
+    public AsyncMethodCallback<User> getResultHandler(final AsyncFrameBuffer fb, final int seqid) {
         final org.apache.thrift.AsyncProcessFunction fcall = this;
         return new AsyncMethodCallback<User>() { 
-          public void onComplete(User o) {
+          @Override
+        public void onComplete(User o) {
             createUser_result result = new createUser_result();
             result.success = o;
             try {
@@ -299,7 +317,8 @@ public class BookshoutAccountsService {
             }
             fb.close();
           }
-          public void onError(Exception e) {
+          @Override
+        public void onError(Exception e) {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             createUser_result result = new createUser_result();
@@ -318,11 +337,13 @@ public class BookshoutAccountsService {
         };
       }
 
-      protected boolean isOneway() {
+      @Override
+    protected boolean isOneway() {
         return false;
       }
 
-      public void start(I iface, createUser_args args, org.apache.thrift.async.AsyncMethodCallback<User> resultHandler) throws TException {
+      @Override
+    public void start(I iface, createUser_args args, org.apache.thrift.async.AsyncMethodCallback<User> resultHandler) throws TException {
         iface.createUser(args.email, args.password,resultHandler);
       }
     }
@@ -332,14 +353,17 @@ public class BookshoutAccountsService {
         super("getUser");
       }
 
-      public getUser_args getEmptyArgsInstance() {
+      @Override
+    public getUser_args getEmptyArgsInstance() {
         return new getUser_args();
       }
 
-      public AsyncMethodCallback<User> getResultHandler(final AsyncFrameBuffer fb, final int seqid) {
+      @Override
+    public AsyncMethodCallback<User> getResultHandler(final AsyncFrameBuffer fb, final int seqid) {
         final org.apache.thrift.AsyncProcessFunction fcall = this;
         return new AsyncMethodCallback<User>() { 
-          public void onComplete(User o) {
+          @Override
+        public void onComplete(User o) {
             getUser_result result = new getUser_result();
             result.success = o;
             try {
@@ -350,7 +374,8 @@ public class BookshoutAccountsService {
             }
             fb.close();
           }
-          public void onError(Exception e) {
+          @Override
+        public void onError(Exception e) {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             getUser_result result = new getUser_result();
@@ -369,11 +394,13 @@ public class BookshoutAccountsService {
         };
       }
 
-      protected boolean isOneway() {
+      @Override
+    protected boolean isOneway() {
         return false;
       }
 
-      public void start(I iface, getUser_args args, org.apache.thrift.async.AsyncMethodCallback<User> resultHandler) throws TException {
+      @Override
+    public void start(I iface, getUser_args args, org.apache.thrift.async.AsyncMethodCallback<User> resultHandler) throws TException {
         iface.getUser(args.id,resultHandler);
       }
     }
@@ -447,11 +474,13 @@ public class BookshoutAccountsService {
         _fieldName = fieldName;
       }
 
-      public short getThriftFieldId() {
+      @Override
+    public short getThriftFieldId() {
         return _thriftId;
       }
 
-      public String getFieldName() {
+      @Override
+    public String getFieldName() {
         return _fieldName;
       }
     }
@@ -492,11 +521,13 @@ public class BookshoutAccountsService {
       }
     }
 
+    @Override
     public createUser_args deepCopy() {
       return new createUser_args(this);
     }
 
     
+    @Override
     public void clear() {
       this.email = null;
       this.password = null;
@@ -550,6 +581,7 @@ public class BookshoutAccountsService {
       }
     }
 
+    @Override
     public void setFieldValue(_Fields field, Object value) {
       switch (field) {
       case EMAIL:
@@ -571,6 +603,7 @@ public class BookshoutAccountsService {
       }
     }
 
+    @Override
     public Object getFieldValue(_Fields field) {
       switch (field) {
       case EMAIL:
@@ -584,6 +617,7 @@ public class BookshoutAccountsService {
     }
 
     /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+    @Override
     public boolean isSet(_Fields field) {
       if (field == null) {
         throw new IllegalArgumentException();
@@ -650,6 +684,7 @@ public class BookshoutAccountsService {
     }
 
     
+    @Override
     public int compareTo(createUser_args other) {
       if (!getClass().equals(other.getClass())) {
         return getClass().getName().compareTo(other.getClass().getName());
@@ -680,14 +715,17 @@ public class BookshoutAccountsService {
       return 0;
     }
 
+    @Override
     public _Fields fieldForId(int fieldId) {
       return _Fields.findByThriftId(fieldId);
     }
 
+    @Override
     public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
+    @Override
     public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
     }
@@ -738,14 +776,16 @@ public class BookshoutAccountsService {
     }
 
     private static class createUser_argsStandardSchemeFactory implements SchemeFactory {
-      public createUser_argsStandardScheme getScheme() {
+      @Override
+    public createUser_argsStandardScheme getScheme() {
         return new createUser_argsStandardScheme();
       }
     }
 
     private static class createUser_argsStandardScheme extends StandardScheme<createUser_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, createUser_args struct) throws org.apache.thrift.TException {
+      @Override
+    public void read(org.apache.thrift.protocol.TProtocol iprot, createUser_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -782,7 +822,8 @@ public class BookshoutAccountsService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, createUser_args struct) throws org.apache.thrift.TException {
+      @Override
+    public void write(org.apache.thrift.protocol.TProtocol oprot, createUser_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -803,7 +844,8 @@ public class BookshoutAccountsService {
     }
 
     private static class createUser_argsTupleSchemeFactory implements SchemeFactory {
-      public createUser_argsTupleScheme getScheme() {
+      @Override
+    public createUser_argsTupleScheme getScheme() {
         return new createUser_argsTupleScheme();
       }
     }
@@ -811,7 +853,8 @@ public class BookshoutAccountsService {
     private static class createUser_argsTupleScheme extends TupleScheme<createUser_args> {
 
       
-      public void write(org.apache.thrift.protocol.TProtocol prot, createUser_args struct) throws org.apache.thrift.TException {
+      @Override
+    public void write(org.apache.thrift.protocol.TProtocol prot, createUser_args struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetEmail()) {
@@ -830,7 +873,8 @@ public class BookshoutAccountsService {
       }
 
       
-      public void read(org.apache.thrift.protocol.TProtocol prot, createUser_args struct) throws org.apache.thrift.TException {
+      @Override
+    public void read(org.apache.thrift.protocol.TProtocol prot, createUser_args struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(2);
         if (incoming.get(0)) {
@@ -908,11 +952,13 @@ public class BookshoutAccountsService {
         _fieldName = fieldName;
       }
 
-      public short getThriftFieldId() {
+      @Override
+    public short getThriftFieldId() {
         return _thriftId;
       }
 
-      public String getFieldName() {
+      @Override
+    public String getFieldName() {
         return _fieldName;
       }
     }
@@ -946,11 +992,13 @@ public class BookshoutAccountsService {
       }
     }
 
+    @Override
     public createUser_result deepCopy() {
       return new createUser_result(this);
     }
 
     
+    @Override
     public void clear() {
       this.success = null;
     }
@@ -979,6 +1027,7 @@ public class BookshoutAccountsService {
       }
     }
 
+    @Override
     public void setFieldValue(_Fields field, Object value) {
       switch (field) {
       case SUCCESS:
@@ -992,6 +1041,7 @@ public class BookshoutAccountsService {
       }
     }
 
+    @Override
     public Object getFieldValue(_Fields field) {
       switch (field) {
       case SUCCESS:
@@ -1002,6 +1052,7 @@ public class BookshoutAccountsService {
     }
 
     /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+    @Override
     public boolean isSet(_Fields field) {
       if (field == null) {
         throw new IllegalArgumentException();
@@ -1052,6 +1103,7 @@ public class BookshoutAccountsService {
     }
 
     
+    @Override
     public int compareTo(createUser_result other) {
       if (!getClass().equals(other.getClass())) {
         return getClass().getName().compareTo(other.getClass().getName());
@@ -1072,14 +1124,17 @@ public class BookshoutAccountsService {
       return 0;
     }
 
+    @Override
     public _Fields fieldForId(int fieldId) {
       return _Fields.findByThriftId(fieldId);
     }
 
+    @Override
     public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
+    @Override
     public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
       }
@@ -1125,14 +1180,16 @@ public class BookshoutAccountsService {
     }
 
     private static class createUser_resultStandardSchemeFactory implements SchemeFactory {
-      public createUser_resultStandardScheme getScheme() {
+      @Override
+    public createUser_resultStandardScheme getScheme() {
         return new createUser_resultStandardScheme();
       }
     }
 
     private static class createUser_resultStandardScheme extends StandardScheme<createUser_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, createUser_result struct) throws org.apache.thrift.TException {
+      @Override
+    public void read(org.apache.thrift.protocol.TProtocol iprot, createUser_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -1162,7 +1219,8 @@ public class BookshoutAccountsService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, createUser_result struct) throws org.apache.thrift.TException {
+      @Override
+    public void write(org.apache.thrift.protocol.TProtocol oprot, createUser_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -1178,7 +1236,8 @@ public class BookshoutAccountsService {
     }
 
     private static class createUser_resultTupleSchemeFactory implements SchemeFactory {
-      public createUser_resultTupleScheme getScheme() {
+      @Override
+    public createUser_resultTupleScheme getScheme() {
         return new createUser_resultTupleScheme();
       }
     }
@@ -1186,7 +1245,8 @@ public class BookshoutAccountsService {
     private static class createUser_resultTupleScheme extends TupleScheme<createUser_result> {
 
       
-      public void write(org.apache.thrift.protocol.TProtocol prot, createUser_result struct) throws org.apache.thrift.TException {
+      @Override
+    public void write(org.apache.thrift.protocol.TProtocol prot, createUser_result struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -1199,7 +1259,8 @@ public class BookshoutAccountsService {
       }
 
       
-      public void read(org.apache.thrift.protocol.TProtocol prot, createUser_result struct) throws org.apache.thrift.TException {
+      @Override
+    public void read(org.apache.thrift.protocol.TProtocol prot, createUser_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -1274,11 +1335,13 @@ public class BookshoutAccountsService {
         _fieldName = fieldName;
       }
 
-      public short getThriftFieldId() {
+      @Override
+    public short getThriftFieldId() {
         return _thriftId;
       }
 
-      public String getFieldName() {
+      @Override
+    public String getFieldName() {
         return _fieldName;
       }
     }
@@ -1314,11 +1377,13 @@ public class BookshoutAccountsService {
       this.id = other.id;
     }
 
+    @Override
     public getUser_args deepCopy() {
       return new getUser_args(this);
     }
 
     
+    @Override
     public void clear() {
       setIdIsSet(false);
       this.id = 0;
@@ -1347,6 +1412,7 @@ public class BookshoutAccountsService {
       __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __ID_ISSET_ID, value);
     }
 
+    @Override
     public void setFieldValue(_Fields field, Object value) {
       switch (field) {
       case ID:
@@ -1360,6 +1426,7 @@ public class BookshoutAccountsService {
       }
     }
 
+    @Override
     public Object getFieldValue(_Fields field) {
       switch (field) {
       case ID:
@@ -1370,6 +1437,7 @@ public class BookshoutAccountsService {
     }
 
     /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+    @Override
     public boolean isSet(_Fields field) {
       if (field == null) {
         throw new IllegalArgumentException();
@@ -1420,6 +1488,7 @@ public class BookshoutAccountsService {
     }
 
     
+    @Override
     public int compareTo(getUser_args other) {
       if (!getClass().equals(other.getClass())) {
         return getClass().getName().compareTo(other.getClass().getName());
@@ -1440,14 +1509,17 @@ public class BookshoutAccountsService {
       return 0;
     }
 
+    @Override
     public _Fields fieldForId(int fieldId) {
       return _Fields.findByThriftId(fieldId);
     }
 
+    @Override
     public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
+    @Override
     public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
     }
@@ -1488,14 +1560,16 @@ public class BookshoutAccountsService {
     }
 
     private static class getUser_argsStandardSchemeFactory implements SchemeFactory {
-      public getUser_argsStandardScheme getScheme() {
+      @Override
+    public getUser_argsStandardScheme getScheme() {
         return new getUser_argsStandardScheme();
       }
     }
 
     private static class getUser_argsStandardScheme extends StandardScheme<getUser_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, getUser_args struct) throws org.apache.thrift.TException {
+      @Override
+    public void read(org.apache.thrift.protocol.TProtocol iprot, getUser_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -1524,7 +1598,8 @@ public class BookshoutAccountsService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, getUser_args struct) throws org.apache.thrift.TException {
+      @Override
+    public void write(org.apache.thrift.protocol.TProtocol oprot, getUser_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -1538,7 +1613,8 @@ public class BookshoutAccountsService {
     }
 
     private static class getUser_argsTupleSchemeFactory implements SchemeFactory {
-      public getUser_argsTupleScheme getScheme() {
+      @Override
+    public getUser_argsTupleScheme getScheme() {
         return new getUser_argsTupleScheme();
       }
     }
@@ -1546,7 +1622,8 @@ public class BookshoutAccountsService {
     private static class getUser_argsTupleScheme extends TupleScheme<getUser_args> {
 
       
-      public void write(org.apache.thrift.protocol.TProtocol prot, getUser_args struct) throws org.apache.thrift.TException {
+      @Override
+    public void write(org.apache.thrift.protocol.TProtocol prot, getUser_args struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetId()) {
@@ -1559,7 +1636,8 @@ public class BookshoutAccountsService {
       }
 
       
-      public void read(org.apache.thrift.protocol.TProtocol prot, getUser_args struct) throws org.apache.thrift.TException {
+      @Override
+    public void read(org.apache.thrift.protocol.TProtocol prot, getUser_args struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -1633,11 +1711,13 @@ public class BookshoutAccountsService {
         _fieldName = fieldName;
       }
 
-      public short getThriftFieldId() {
+      @Override
+    public short getThriftFieldId() {
         return _thriftId;
       }
 
-      public String getFieldName() {
+      @Override
+    public String getFieldName() {
         return _fieldName;
       }
     }
@@ -1671,11 +1751,13 @@ public class BookshoutAccountsService {
       }
     }
 
+    @Override
     public getUser_result deepCopy() {
       return new getUser_result(this);
     }
 
     
+    @Override
     public void clear() {
       this.success = null;
     }
@@ -1704,6 +1786,7 @@ public class BookshoutAccountsService {
       }
     }
 
+    @Override
     public void setFieldValue(_Fields field, Object value) {
       switch (field) {
       case SUCCESS:
@@ -1717,6 +1800,7 @@ public class BookshoutAccountsService {
       }
     }
 
+    @Override
     public Object getFieldValue(_Fields field) {
       switch (field) {
       case SUCCESS:
@@ -1727,6 +1811,7 @@ public class BookshoutAccountsService {
     }
 
     /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+    @Override
     public boolean isSet(_Fields field) {
       if (field == null) {
         throw new IllegalArgumentException();
@@ -1777,6 +1862,7 @@ public class BookshoutAccountsService {
     }
 
     
+    @Override
     public int compareTo(getUser_result other) {
       if (!getClass().equals(other.getClass())) {
         return getClass().getName().compareTo(other.getClass().getName());
@@ -1797,14 +1883,17 @@ public class BookshoutAccountsService {
       return 0;
     }
 
+    @Override
     public _Fields fieldForId(int fieldId) {
       return _Fields.findByThriftId(fieldId);
     }
 
+    @Override
     public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
+    @Override
     public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
       }
@@ -1850,14 +1939,16 @@ public class BookshoutAccountsService {
     }
 
     private static class getUser_resultStandardSchemeFactory implements SchemeFactory {
-      public getUser_resultStandardScheme getScheme() {
+      @Override
+    public getUser_resultStandardScheme getScheme() {
         return new getUser_resultStandardScheme();
       }
     }
 
     private static class getUser_resultStandardScheme extends StandardScheme<getUser_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, getUser_result struct) throws org.apache.thrift.TException {
+      @Override
+    public void read(org.apache.thrift.protocol.TProtocol iprot, getUser_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -1887,7 +1978,8 @@ public class BookshoutAccountsService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, getUser_result struct) throws org.apache.thrift.TException {
+      @Override
+    public void write(org.apache.thrift.protocol.TProtocol oprot, getUser_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -1903,7 +1995,8 @@ public class BookshoutAccountsService {
     }
 
     private static class getUser_resultTupleSchemeFactory implements SchemeFactory {
-      public getUser_resultTupleScheme getScheme() {
+      @Override
+    public getUser_resultTupleScheme getScheme() {
         return new getUser_resultTupleScheme();
       }
     }
@@ -1911,7 +2004,8 @@ public class BookshoutAccountsService {
     private static class getUser_resultTupleScheme extends TupleScheme<getUser_result> {
 
      
-      public void write(org.apache.thrift.protocol.TProtocol prot, getUser_result struct) throws org.apache.thrift.TException {
+      @Override
+    public void write(org.apache.thrift.protocol.TProtocol prot, getUser_result struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -1924,7 +2018,8 @@ public class BookshoutAccountsService {
       }
 
       
-      public void read(org.apache.thrift.protocol.TProtocol prot, getUser_result struct) throws org.apache.thrift.TException {
+      @Override
+    public void read(org.apache.thrift.protocol.TProtocol prot, getUser_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {

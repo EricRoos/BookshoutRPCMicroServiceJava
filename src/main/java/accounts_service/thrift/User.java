@@ -86,10 +86,12 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
       _fieldName = fieldName;
     }
 
+    @Override
     public short getThriftFieldId() {
       return _thriftId;
     }
 
+    @Override
     public String getFieldName() {
       return _fieldName;
     }
@@ -124,12 +126,14 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
     }
   }
 
-  public User deepCopy() {
+  @Override
+public User deepCopy() {
     return new User(this);
   }
 
   
-  public void clear() {
+  @Override
+public void clear() {
     this.email = null;
   }
 
@@ -157,7 +161,8 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
     }
   }
 
-  public void setFieldValue(_Fields field, Object value) {
+  @Override
+public void setFieldValue(_Fields field, Object value) {
     switch (field) {
     case EMAIL:
       if (value == null) {
@@ -170,7 +175,8 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
     }
   }
 
-  public Object getFieldValue(_Fields field) {
+  @Override
+public Object getFieldValue(_Fields field) {
     switch (field) {
     case EMAIL:
       return getEmail();
@@ -180,7 +186,8 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
   }
 
   /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
-  public boolean isSet(_Fields field) {
+  @Override
+public boolean isSet(_Fields field) {
     if (field == null) {
       throw new IllegalArgumentException();
     }
@@ -230,7 +237,8 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
   }
 
  
-  public int compareTo(User other) {
+  @Override
+public int compareTo(User other) {
     if (!getClass().equals(other.getClass())) {
       return getClass().getName().compareTo(other.getClass().getName());
     }
@@ -250,15 +258,18 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
     return 0;
   }
 
-  public _Fields fieldForId(int fieldId) {
+  @Override
+public _Fields fieldForId(int fieldId) {
     return _Fields.findByThriftId(fieldId);
   }
 
-  public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
+  @Override
+public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
     schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
   }
 
-  public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+  @Override
+public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
     schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
   }
 
@@ -300,6 +311,7 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
   }
 
   private static class UserStandardSchemeFactory implements SchemeFactory {
+    @Override
     public UserStandardScheme getScheme() {
       return new UserStandardScheme();
     }
@@ -307,6 +319,7 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
 
   private static class UserStandardScheme extends StandardScheme<User> {
 
+    @Override
     public void read(org.apache.thrift.protocol.TProtocol iprot, User struct) throws org.apache.thrift.TException {
       org.apache.thrift.protocol.TField schemeField;
       iprot.readStructBegin();
@@ -336,6 +349,7 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
       struct.validate();
     }
 
+    @Override
     public void write(org.apache.thrift.protocol.TProtocol oprot, User struct) throws org.apache.thrift.TException {
       struct.validate();
 
@@ -352,6 +366,7 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
   }
 
   private static class UserTupleSchemeFactory implements SchemeFactory {
+    @Override
     public UserTupleScheme getScheme() {
       return new UserTupleScheme();
     }
@@ -360,6 +375,7 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
   private static class UserTupleScheme extends TupleScheme<User> {
 
     
+    @Override
     public void write(org.apache.thrift.protocol.TProtocol prot, User struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
       BitSet optionals = new BitSet();
@@ -373,6 +389,7 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
     }
 
     
+    @Override
     public void read(org.apache.thrift.protocol.TProtocol prot, User struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
       BitSet incoming = iprot.readBitSet(1);

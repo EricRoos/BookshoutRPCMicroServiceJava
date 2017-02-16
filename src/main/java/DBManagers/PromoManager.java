@@ -97,7 +97,7 @@ public class PromoManager {
 		Transaction tx = null;
 	    try{
 	    	tx = session.beginTransaction();
-	        Promo = (Promo)session.get(Promo.class, id);
+	        Promo = session.get(Promo.class, id);
 	        tx.commit();
 	    }catch (HibernateException e) {
 	    	if (tx!=null) tx.rollback();

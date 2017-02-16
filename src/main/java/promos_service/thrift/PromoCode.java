@@ -91,10 +91,12 @@ public class PromoCode implements org.apache.thrift.TBase<PromoCode, PromoCode._
       _fieldName = fieldName;
     }
 
+    @Override
     public short getThriftFieldId() {
       return _thriftId;
     }
 
+    @Override
     public String getFieldName() {
       return _fieldName;
     }
@@ -136,7 +138,8 @@ public class PromoCode implements org.apache.thrift.TBase<PromoCode, PromoCode._
     }
   }
 
-  public PromoCode deepCopy() {
+  @Override
+public PromoCode deepCopy() {
     return new PromoCode(this);
   }
 
@@ -194,7 +197,8 @@ public class PromoCode implements org.apache.thrift.TBase<PromoCode, PromoCode._
     }
   }
 
-  public void setFieldValue(_Fields field, Object value) {
+  @Override
+public void setFieldValue(_Fields field, Object value) {
     switch (field) {
     case PROMO:
       if (value == null) {
@@ -215,7 +219,8 @@ public class PromoCode implements org.apache.thrift.TBase<PromoCode, PromoCode._
     }
   }
 
-  public Object getFieldValue(_Fields field) {
+  @Override
+public Object getFieldValue(_Fields field) {
     switch (field) {
     case PROMO:
       return getPromo();
@@ -228,7 +233,8 @@ public class PromoCode implements org.apache.thrift.TBase<PromoCode, PromoCode._
   }
 
   /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
-  public boolean isSet(_Fields field) {
+  @Override
+public boolean isSet(_Fields field) {
     if (field == null) {
       throw new IllegalArgumentException();
     }
@@ -324,15 +330,18 @@ public class PromoCode implements org.apache.thrift.TBase<PromoCode, PromoCode._
     return 0;
   }
 
-  public _Fields fieldForId(int fieldId) {
+  @Override
+public _Fields fieldForId(int fieldId) {
     return _Fields.findByThriftId(fieldId);
   }
 
-  public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
+  @Override
+public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
     schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
   }
 
-  public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+  @Override
+public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
     schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
   }
 
@@ -385,6 +394,7 @@ public class PromoCode implements org.apache.thrift.TBase<PromoCode, PromoCode._
   }
 
   private static class PromoCodeStandardSchemeFactory implements SchemeFactory {
+    @Override
     public PromoCodeStandardScheme getScheme() {
       return new PromoCodeStandardScheme();
     }
@@ -392,6 +402,7 @@ public class PromoCode implements org.apache.thrift.TBase<PromoCode, PromoCode._
 
   private static class PromoCodeStandardScheme extends StandardScheme<PromoCode> {
 
+    @Override
     public void read(org.apache.thrift.protocol.TProtocol iprot, PromoCode struct) throws org.apache.thrift.TException {
       org.apache.thrift.protocol.TField schemeField;
       iprot.readStructBegin();
@@ -430,6 +441,7 @@ public class PromoCode implements org.apache.thrift.TBase<PromoCode, PromoCode._
       struct.validate();
     }
 
+    @Override
     public void write(org.apache.thrift.protocol.TProtocol oprot, PromoCode struct) throws org.apache.thrift.TException {
       struct.validate();
 
@@ -451,6 +463,7 @@ public class PromoCode implements org.apache.thrift.TBase<PromoCode, PromoCode._
   }
 
   private static class PromoCodeTupleSchemeFactory implements SchemeFactory {
+    @Override
     public PromoCodeTupleScheme getScheme() {
       return new PromoCodeTupleScheme();
     }

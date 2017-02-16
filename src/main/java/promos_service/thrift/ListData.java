@@ -73,10 +73,12 @@ public class ListData extends org.apache.thrift.TUnion<ListData, ListData._Field
       _fieldName = fieldName;
     }
 
+    @Override
     public short getThriftFieldId() {
       return _thriftId;
     }
 
+    @Override
     public String getFieldName() {
       return _fieldName;
     }
@@ -106,7 +108,8 @@ public class ListData extends org.apache.thrift.TUnion<ListData, ListData._Field
   public ListData(ListData other) {
     super(other);
   }
-  public ListData deepCopy() {
+  @Override
+public ListData deepCopy() {
     return new ListData(this);
   }
 
@@ -320,7 +323,8 @@ public class ListData extends org.apache.thrift.TUnion<ListData, ListData._Field
     return _Fields.findByThriftIdOrThrow(id);
   }
 
-  public _Fields fieldForId(int fieldId) {
+  @Override
+public _Fields fieldForId(int fieldId) {
     return _Fields.findByThriftId(fieldId);
   }
 
@@ -363,7 +367,8 @@ public class ListData extends org.apache.thrift.TUnion<ListData, ListData._Field
   }
 
 
-  public boolean equals(Object other) {
+  @Override
+public boolean equals(Object other) {
     if (other instanceof ListData) {
       return equals((ListData)other);
     } else {

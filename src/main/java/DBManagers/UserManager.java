@@ -51,7 +51,7 @@ public class UserManager {
 		Transaction tx = null;
 	    try{
 	    	tx = session.beginTransaction();
-	        user = (User)session.get(User.class, id);
+	        user = session.get(User.class, id);
 	        tx.commit();
 	    }catch (HibernateException e) {
 	    	if (tx!=null) tx.rollback();
