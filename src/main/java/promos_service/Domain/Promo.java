@@ -7,7 +7,7 @@ import org.javalite.activejdbc.annotations.DbName;
 import org.javalite.activejdbc.annotations.Table;
 
 @DbName("promos")
-public class Promo extends PromoDomainBase{
+public class Promo extends PromoDomainBase {
     private int            id;
     private String         name;
     private Set<PromoCode> promoCodes = new HashSet<PromoCode>(0);
@@ -21,7 +21,7 @@ public class Promo extends PromoDomainBase{
         super();
         this.name = name;
     }
-    
+
     public void setId(int id) {
         this.id = id;
     }
@@ -41,7 +41,7 @@ public class Promo extends PromoDomainBase{
     public void setPromoCodes(Set<PromoCode> promoCodes) {
         this.promoCodes = promoCodes;
     }
-    
+
     public Long countTotalPromoCodes() {
         return PromoCode.count("promo_id = ?", this.getId());
     }

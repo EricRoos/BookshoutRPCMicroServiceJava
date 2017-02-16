@@ -34,8 +34,9 @@ public class PromosServiceHandler implements BookshoutPromosService.Iface {
         int page = 1;
         int perPage = 10;
         Domain.Promo domainPromo = Domain.Promo.findById(promo.getId());
-        
-        List<Domain.PromoCode> codes = domainPromo.getAll(Domain.PromoCode.class).limit(perPage).offset((page-1)*perPage);
+
+        List<Domain.PromoCode> codes = domainPromo.getAll(Domain.PromoCode.class).limit(perPage)
+                .offset((page - 1) * perPage);
 
         EntityList list = new EntityList();
         ListData data = new ListData();

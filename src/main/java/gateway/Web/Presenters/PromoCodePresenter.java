@@ -11,7 +11,8 @@ package Web.Presenters;
  */
 public class PromoCodePresenter {
     private String code;
-    private int id;
+    private int    id;
+
     public PromoCodePresenter(int id, String code) {
         super();
         this.id = id;
