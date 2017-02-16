@@ -19,8 +19,4 @@ public class PromosService extends RPCServerBase {
         PromoManager.warm();
     }
 
-    public static void main(String[] args) throws TTransportException, InstantiationException, IllegalAccessException {
-        RPCServerBase.start(PromosService.class, 9091);
-    }
-
 }

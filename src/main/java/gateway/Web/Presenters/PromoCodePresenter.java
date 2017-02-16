@@ -11,13 +11,14 @@ package Web.Presenters;
  */
 public class PromoCodePresenter {
     private String code;
-
-    public PromoCodePresenter(String code) {
+    private int id;
+    public PromoCodePresenter(int id, String code) {
         super();
+        this.id = id;
         this.code = code;
     }
 
     public static PromoCodePresenter fromThrift(thrift.PromoCode code) {
-        return new PromoCodePresenter(code.getCode());
+        return new PromoCodePresenter(1, code.getCode());
     }
 }

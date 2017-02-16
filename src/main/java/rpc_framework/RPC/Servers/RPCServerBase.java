@@ -13,10 +13,11 @@ public abstract class RPCServerBase {
         TServerTransport serverTransport;
         serverTransport = new TServerSocket(port);
         TServer server = new TSimpleServer(new Args(serverTransport).processor(getProcessor()));
-        warmResources();
+
         Runnable simple = new Runnable() {
             @Override
             public void run() {
+                warmResources();
                 server.serve();
             }
         };

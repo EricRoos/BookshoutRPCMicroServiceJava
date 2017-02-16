@@ -1,6 +1,9 @@
 package Domain;
 
-public class PromoCode {
+import org.javalite.activejdbc.annotations.DbName;
+
+@DbName("promos")
+public class PromoCode extends PromoDomainBase{
     private int    id;
     private String customCode;
     private Promo  promo;
@@ -17,16 +20,12 @@ public class PromoCode {
         this.promo = promo;
     }
 
-    public int getId() {
-        return id;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
 
     public String getCustomCode() {
-        return customCode;
+        return (String)this.get("custom_code");
     }
 
     public void setCustomCode(String customCode) {
