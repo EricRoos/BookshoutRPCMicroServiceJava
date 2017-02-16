@@ -7,7 +7,6 @@ public class PromoServiceDriver {
 
     public static void main(String[] args) throws TTransportException, InstantiationException, IllegalAccessException {
         RPCServerBase.start(PromosService.class, 9091);
-
     }
 
 }
