@@ -3,10 +3,10 @@ import org.apache.thrift.TProcessor;
 import org.apache.thrift.transport.TTransportException;
 
 import DBManagers.PromoManager;
-import RPC.Servers.Base;
+import RPC.Servers.RPCServerBase;
 import thrift.BookshoutAccountsService;
 
-public class AccountsService extends Base{
+public class AccountsService extends RPCServerBase{
 
 	@Override
 	protected TProcessor getProcessor() {
@@ -19,7 +19,7 @@ public class AccountsService extends Base{
 	}
 	
 	public static void main(String[] args) throws TTransportException, InstantiationException, IllegalAccessException {
-		Base.start(AccountsService.class, 9090);
+		RPCServerBase.start(AccountsService.class, 9090);
 		
  	}
 }

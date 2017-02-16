@@ -3,14 +3,14 @@ package Clients;
 
 import org.apache.thrift.TException;
 
-import RPC.Clients.Base;
+import RPC.Clients.RPCClientBase;
 import thrift.BookshoutPromosService;
 import thrift.EntityList;
 import thrift.Promo;
 import thrift.PromoCode;
 
 
-public class PromosRPCClient extends Base implements BookshoutPromosService.Iface{
+public class PromosRPCClient extends RPCClientBase implements BookshoutPromosService.Iface{
 	
 	public PromosRPCClient(String host, int port) throws Exception {
 		super(BookshoutPromosService.Client.class, host, port);

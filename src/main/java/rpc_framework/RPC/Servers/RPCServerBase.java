@@ -7,7 +7,7 @@ import org.apache.thrift.transport.TServerSocket;
 import org.apache.thrift.transport.TServerTransport;
 import org.apache.thrift.transport.TTransportException;
 
-public abstract class Base {
+public abstract class RPCServerBase {
 
 	public void start(int port) throws TTransportException {
 		TServerTransport serverTransport;
@@ -23,7 +23,7 @@ public abstract class Base {
 		
 	}
 	
-	public static void start(Class<? extends Base> server, int port) throws TTransportException, InstantiationException, IllegalAccessException {
+	public static void start(Class<? extends RPCServerBase> server, int port) throws TTransportException, InstantiationException, IllegalAccessException {
 		server.newInstance().start(port);
 	}
 	protected abstract org.apache.thrift.TProcessor getProcessor();
