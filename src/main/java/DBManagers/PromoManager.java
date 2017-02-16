@@ -2,7 +2,6 @@ package DBManagers;
 
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -13,8 +12,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-import Domain.Promos.Promo;
-import Domain.Promos.PromoCode;
+import Domain.Promo;
+import Domain.PromoCode;
 
 public class PromoManager {	
 	private static Session sessionInstance;
@@ -54,6 +53,7 @@ public class PromoManager {
 	
 
 	
+	@SuppressWarnings("deprecation")
 	public PaginatedQueryResponse<PromoCode> getPaginatedPromoCodes(Promo promo, int page, int perPage){
 		List<PromoCode> promoCodes = new ArrayList<PromoCode>();
 		int numResults = 0;
